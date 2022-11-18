@@ -1,6 +1,5 @@
 using GeraCompe.Framework;
 using GeraCompe.Model;
-using GeraCompe.NovaPasta;
 using GeraCompe.Util;
 
 namespace GeraCompe

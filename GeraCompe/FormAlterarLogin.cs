@@ -23,9 +23,6 @@ namespace GeraCompe
 
             txtBoxNovoUsuario.Text = login[0];
             txtBoxNovaSenha.Text = login[1];
-
-            //textBoxLoginBd.Text = login[0];
-            //textBoxSenhaBd.Text = login[1];
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -45,11 +42,7 @@ namespace GeraCompe
                 {
                     DialogResult dialogResult = MessageBox.Show("Ocorreu um erro ao atualizar o login ", "Atualização de login", MessageBoxButtons.OK);
                 }
-
-
-
-            }
-            
+            }            
             
         }
 
