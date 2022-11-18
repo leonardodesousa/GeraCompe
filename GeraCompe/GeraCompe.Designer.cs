@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeraCompe));
             this.btnGerar = new System.Windows.Forms.Button();
             this.mskTextBoxQtdTitulos = new System.Windows.Forms.MaskedTextBox();
             this.labelQtdTitulos = new System.Windows.Forms.Label();
-            this.mskTextBoxDataLiquidacao = new System.Windows.Forms.MaskedTextBox();
             this.labelDataLiquidacao = new System.Windows.Forms.Label();
-            this.mskTextBoxDataArquivo = new System.Windows.Forms.MaskedTextBox();
             this.labelDataArquivo = new System.Windows.Forms.Label();
             this.labelEmpresa = new System.Windows.Forms.Label();
             this.labelUnidade = new System.Windows.Forms.Label();
@@ -42,11 +41,20 @@
             this.labelDirGeracaoArquivo = new System.Windows.Forms.Label();
             this.textBoxDiretorio = new System.Windows.Forms.TextBox();
             this.mskTextBoxDtArq = new System.Windows.Forms.MaskedTextBox();
+            this.mskTextBoxDtLiq = new System.Windows.Forms.MaskedTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelLogin = new System.Windows.Forms.Label();
+            this.textBoxLoginBd = new System.Windows.Forms.TextBox();
+            this.labelSenhaBd = new System.Windows.Forms.Label();
+            this.textBoxSenhaBd = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGerar
             // 
-            this.btnGerar.Location = new System.Drawing.Point(60, 424);
+            this.btnGerar.Location = new System.Drawing.Point(76, 549);
             this.btnGerar.Name = "btnGerar";
             this.btnGerar.Size = new System.Drawing.Size(112, 47);
             this.btnGerar.TabIndex = 10;
@@ -57,7 +65,7 @@
             // mskTextBoxQtdTitulos
             // 
             this.mskTextBoxQtdTitulos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mskTextBoxQtdTitulos.Location = new System.Drawing.Point(309, 88);
+            this.mskTextBoxQtdTitulos.Location = new System.Drawing.Point(281, 44);
             this.mskTextBoxQtdTitulos.Mask = "000000";
             this.mskTextBoxQtdTitulos.Name = "mskTextBoxQtdTitulos";
             this.mskTextBoxQtdTitulos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -69,59 +77,37 @@
             // 
             this.labelQtdTitulos.AutoSize = true;
             this.labelQtdTitulos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelQtdTitulos.Location = new System.Drawing.Point(60, 91);
+            this.labelQtdTitulos.Location = new System.Drawing.Point(32, 47);
             this.labelQtdTitulos.Name = "labelQtdTitulos";
             this.labelQtdTitulos.Size = new System.Drawing.Size(240, 20);
             this.labelQtdTitulos.TabIndex = 2;
             this.labelQtdTitulos.Text = "Quantidade de títulos a liquidar ->";
             // 
-            // mskTextBoxDataLiquidacao
-            // 
-            this.mskTextBoxDataLiquidacao.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mskTextBoxDataLiquidacao.Location = new System.Drawing.Point(729, 129);
-            this.mskTextBoxDataLiquidacao.Mask = "000000";
-            this.mskTextBoxDataLiquidacao.Name = "mskTextBoxDataLiquidacao";
-            this.mskTextBoxDataLiquidacao.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxDataLiquidacao.TabIndex = 4;
-            this.mskTextBoxDataLiquidacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskTextBoxDataLiquidacao.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxDataLiquidacao_MaskInputRejected);
-            // 
             // labelDataLiquidacao
             // 
             this.labelDataLiquidacao.AutoSize = true;
             this.labelDataLiquidacao.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDataLiquidacao.Location = new System.Drawing.Point(483, 132);
+            this.labelDataLiquidacao.Location = new System.Drawing.Point(455, 88);
             this.labelDataLiquidacao.Name = "labelDataLiquidacao";
-            this.labelDataLiquidacao.Size = new System.Drawing.Size(230, 20);
+            this.labelDataLiquidacao.Size = new System.Drawing.Size(258, 20);
             this.labelDataLiquidacao.TabIndex = 4;
-            this.labelDataLiquidacao.Text = "Data da liquidação (aammdd) ->";
-            // 
-            // mskTextBoxDataArquivo
-            // 
-            this.mskTextBoxDataArquivo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mskTextBoxDataArquivo.Location = new System.Drawing.Point(729, 88);
-            this.mskTextBoxDataArquivo.Mask = "00000000";
-            this.mskTextBoxDataArquivo.Name = "mskTextBoxDataArquivo";
-            this.mskTextBoxDataArquivo.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxDataArquivo.TabIndex = 2;
-            this.mskTextBoxDataArquivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.mskTextBoxDataArquivo.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxDataArquivo_MaskInputRejected);
+            this.labelDataLiquidacao.Text = "Data da liquidação (dd/mm/aaaa) ->";
             // 
             // labelDataArquivo
             // 
             this.labelDataArquivo.AutoSize = true;
             this.labelDataArquivo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDataArquivo.Location = new System.Drawing.Point(483, 91);
+            this.labelDataArquivo.Location = new System.Drawing.Point(474, 47);
             this.labelDataArquivo.Name = "labelDataArquivo";
-            this.labelDataArquivo.Size = new System.Drawing.Size(227, 20);
+            this.labelDataArquivo.Size = new System.Drawing.Size(239, 20);
             this.labelDataArquivo.TabIndex = 6;
-            this.labelDataArquivo.Text = "Data do arquivo (aaaammdd) ->";
+            this.labelDataArquivo.Text = "Data do arquivo (dd/mm/aaaa) ->";
             // 
             // labelEmpresa
             // 
             this.labelEmpresa.AutoSize = true;
             this.labelEmpresa.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelEmpresa.Location = new System.Drawing.Point(214, 136);
+            this.labelEmpresa.Location = new System.Drawing.Point(186, 92);
             this.labelEmpresa.Name = "labelEmpresa";
             this.labelEmpresa.Size = new System.Drawing.Size(86, 20);
             this.labelEmpresa.TabIndex = 7;
@@ -131,7 +117,7 @@
             // 
             this.labelUnidade.AutoSize = true;
             this.labelUnidade.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelUnidade.Location = new System.Drawing.Point(215, 179);
+            this.labelUnidade.Location = new System.Drawing.Point(187, 135);
             this.labelUnidade.Name = "labelUnidade";
             this.labelUnidade.Size = new System.Drawing.Size(85, 20);
             this.labelUnidade.TabIndex = 8;
@@ -140,7 +126,7 @@
             // mskTextBoxEmpresa
             // 
             this.mskTextBoxEmpresa.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mskTextBoxEmpresa.Location = new System.Drawing.Point(309, 129);
+            this.mskTextBoxEmpresa.Location = new System.Drawing.Point(281, 85);
             this.mskTextBoxEmpresa.Mask = "00";
             this.mskTextBoxEmpresa.Name = "mskTextBoxEmpresa";
             this.mskTextBoxEmpresa.Size = new System.Drawing.Size(100, 27);
@@ -151,7 +137,7 @@
             // mskTextBoxUnidade
             // 
             this.mskTextBoxUnidade.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mskTextBoxUnidade.Location = new System.Drawing.Point(309, 172);
+            this.mskTextBoxUnidade.Location = new System.Drawing.Point(281, 128);
             this.mskTextBoxUnidade.Mask = "00";
             this.mskTextBoxUnidade.Name = "mskTextBoxUnidade";
             this.mskTextBoxUnidade.Size = new System.Drawing.Size(100, 27);
@@ -163,7 +149,7 @@
             // 
             this.labelDirGeracaoArquivo.AutoSize = true;
             this.labelDirGeracaoArquivo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelDirGeracaoArquivo.Location = new System.Drawing.Point(56, 248);
+            this.labelDirGeracaoArquivo.Location = new System.Drawing.Point(28, 204);
             this.labelDirGeracaoArquivo.Name = "labelDirGeracaoArquivo";
             this.labelDirGeracaoArquivo.Size = new System.Drawing.Size(244, 20);
             this.labelDirGeracaoArquivo.TabIndex = 11;
@@ -171,45 +157,128 @@
             // 
             // textBoxDiretorio
             // 
-            this.textBoxDiretorio.Location = new System.Drawing.Point(309, 245);
+            this.textBoxDiretorio.Location = new System.Drawing.Point(281, 201);
             this.textBoxDiretorio.Name = "textBoxDiretorio";
-            this.textBoxDiretorio.Size = new System.Drawing.Size(520, 23);
-            this.textBoxDiretorio.TabIndex = 12;
+            this.textBoxDiretorio.Size = new System.Drawing.Size(538, 23);
+            this.textBoxDiretorio.TabIndex = 6;
             this.textBoxDiretorio.TextChanged += new System.EventHandler(this.textBoxDiretorio_TextChanged);
             // 
             // mskTextBoxDtArq
             // 
-            this.mskTextBoxDtArq.Location = new System.Drawing.Point(877, 88);
+            this.mskTextBoxDtArq.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mskTextBoxDtArq.Location = new System.Drawing.Point(719, 40);
             this.mskTextBoxDtArq.Mask = "00/00/0000";
             this.mskTextBoxDtArq.Name = "mskTextBoxDtArq";
-            this.mskTextBoxDtArq.Size = new System.Drawing.Size(100, 23);
-            this.mskTextBoxDtArq.TabIndex = 13;
+            this.mskTextBoxDtArq.Size = new System.Drawing.Size(100, 27);
+            this.mskTextBoxDtArq.TabIndex = 2;
             this.mskTextBoxDtArq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxDtArq.ValidatingType = typeof(System.DateTime);
+            // 
+            // mskTextBoxDtLiq
+            // 
+            this.mskTextBoxDtLiq.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mskTextBoxDtLiq.Location = new System.Drawing.Point(719, 81);
+            this.mskTextBoxDtLiq.Mask = "00/00/0000";
+            this.mskTextBoxDtLiq.Name = "mskTextBoxDtLiq";
+            this.mskTextBoxDtLiq.Size = new System.Drawing.Size(100, 27);
+            this.mskTextBoxDtLiq.TabIndex = 4;
+            this.mskTextBoxDtLiq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.mskTextBoxDtLiq.ValidatingType = typeof(System.DateTime);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.mskTextBoxDtLiq);
+            this.groupBox1.Controls.Add(this.mskTextBoxDtArq);
+            this.groupBox1.Controls.Add(this.textBoxDiretorio);
+            this.groupBox1.Controls.Add(this.labelDirGeracaoArquivo);
+            this.groupBox1.Controls.Add(this.mskTextBoxUnidade);
+            this.groupBox1.Controls.Add(this.mskTextBoxEmpresa);
+            this.groupBox1.Controls.Add(this.labelUnidade);
+            this.groupBox1.Controls.Add(this.labelEmpresa);
+            this.groupBox1.Controls.Add(this.labelDataArquivo);
+            this.groupBox1.Controls.Add(this.labelDataLiquidacao);
+            this.groupBox1.Controls.Add(this.labelQtdTitulos);
+            this.groupBox1.Controls.Add(this.mskTextBoxQtdTitulos);
+            this.groupBox1.Location = new System.Drawing.Point(44, 240);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(877, 273);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Dados da geração do Arquivo";
+            // 
+            // labelLogin
+            // 
+            this.labelLogin.AutoSize = true;
+            this.labelLogin.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelLogin.Location = new System.Drawing.Point(206, 37);
+            this.labelLogin.Name = "labelLogin";
+            this.labelLogin.Size = new System.Drawing.Size(66, 20);
+            this.labelLogin.TabIndex = 13;
+            this.labelLogin.Text = "Login ->";
+            // 
+            // textBoxLoginBd
+            // 
+            this.textBoxLoginBd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxLoginBd.Location = new System.Drawing.Point(278, 30);
+            this.textBoxLoginBd.MaxLength = 25;
+            this.textBoxLoginBd.Name = "textBoxLoginBd";
+            this.textBoxLoginBd.ReadOnly = true;
+            this.textBoxLoginBd.Size = new System.Drawing.Size(201, 27);
+            this.textBoxLoginBd.TabIndex = 14;
+            this.textBoxLoginBd.TextChanged += new System.EventHandler(this.textBoxLoginBd_TextChanged);
+            // 
+            // labelSenhaBd
+            // 
+            this.labelSenhaBd.AutoSize = true;
+            this.labelSenhaBd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelSenhaBd.Location = new System.Drawing.Point(203, 93);
+            this.labelSenhaBd.Name = "labelSenhaBd";
+            this.labelSenhaBd.Size = new System.Drawing.Size(69, 20);
+            this.labelSenhaBd.TabIndex = 15;
+            this.labelSenhaBd.Text = "Senha ->";
+            // 
+            // textBoxSenhaBd
+            // 
+            this.textBoxSenhaBd.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxSenhaBd.Location = new System.Drawing.Point(278, 90);
+            this.textBoxSenhaBd.MaxLength = 25;
+            this.textBoxSenhaBd.Name = "textBoxSenhaBd";
+            this.textBoxSenhaBd.PasswordChar = '*';
+            this.textBoxSenhaBd.ReadOnly = true;
+            this.textBoxSenhaBd.Size = new System.Drawing.Size(201, 27);
+            this.textBoxSenhaBd.TabIndex = 16;
+            this.textBoxSenhaBd.TextChanged += new System.EventHandler(this.textBoxSenhaBd_TextChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBoxSenhaBd);
+            this.groupBox2.Controls.Add(this.labelSenhaBd);
+            this.groupBox2.Controls.Add(this.textBoxLoginBd);
+            this.groupBox2.Controls.Add(this.labelLogin);
+            this.groupBox2.Location = new System.Drawing.Point(44, 45);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(877, 176);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Login Banco de dados";
             // 
             // GeraCompe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 572);
-            this.Controls.Add(this.mskTextBoxDtArq);
-            this.Controls.Add(this.textBoxDiretorio);
-            this.Controls.Add(this.labelDirGeracaoArquivo);
-            this.Controls.Add(this.mskTextBoxUnidade);
-            this.Controls.Add(this.mskTextBoxEmpresa);
-            this.Controls.Add(this.labelUnidade);
-            this.Controls.Add(this.labelEmpresa);
-            this.Controls.Add(this.labelDataArquivo);
-            this.Controls.Add(this.mskTextBoxDataArquivo);
-            this.Controls.Add(this.labelDataLiquidacao);
-            this.Controls.Add(this.mskTextBoxDataLiquidacao);
-            this.Controls.Add(this.labelQtdTitulos);
-            this.Controls.Add(this.mskTextBoxQtdTitulos);
+            this.ClientSize = new System.Drawing.Size(1259, 644);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnGerar);
+            this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GeraCompe";
             this.Text = "Tela Principal";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -218,9 +287,7 @@
         private Button btnGerar;
         private MaskedTextBox mskTextBoxQtdTitulos;
         private Label labelQtdTitulos;
-        private MaskedTextBox mskTextBoxDataLiquidacao;
         private Label labelDataLiquidacao;
-        private MaskedTextBox mskTextBoxDataArquivo;
         private Label labelDataArquivo;
         private Label labelEmpresa;
         private Label labelUnidade;
@@ -229,5 +296,12 @@
         private Label labelDirGeracaoArquivo;
         private TextBox textBoxDiretorio;
         private MaskedTextBox mskTextBoxDtArq;
+        private MaskedTextBox mskTextBoxDtLiq;
+        private GroupBox groupBox1;
+        private Label labelLogin;
+        private TextBox textBoxLoginBd;
+        private Label labelSenhaBd;
+        private TextBox textBoxSenhaBd;
+        private GroupBox groupBox2;
     }
 }

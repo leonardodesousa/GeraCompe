@@ -6,11 +6,22 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Icones\Banco.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Icones\Banco.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.80" />
     <PackageReference Include="OracleLoggerProvider" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Oracle.DataAccess">
+      <HintPath>..\Oracle.DataAccess.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

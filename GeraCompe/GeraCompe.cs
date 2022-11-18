@@ -1,3 +1,4 @@
+using GeraCompe.Framework;
 using GeraCompe.Model;
 using GeraCompe.NovaPasta;
 using GeraCompe.Util;
@@ -12,12 +13,19 @@ namespace GeraCompe
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = String.Format("Gerador de Arquivo de Compensação - Letsbank (Versão {0})", version);
 
+            UserBancoDeDados user = new UserBancoDeDados();
+            List<String> login = new List<String>();
+            login = user.getLoginBd();
+
+            textBoxLoginBd.Text = login[0];
+            textBoxSenhaBd.Text = login[1];
+
             LeitorArquivoParametros leitor = new LeitorArquivoParametros();
             List<String> lista = new List<string>();
             lista = leitor.BuscaParametros();
-
-            mskTextBoxDataLiquidacao.Text = lista[0].ToString();
-            mskTextBoxDataArquivo.Text = lista[1].ToString();
+                        
+            mskTextBoxDtLiq.Text = lista[0];            
+            mskTextBoxDtArq.Text = lista[1];
             mskTextBoxEmpresa.Text = lista[2].ToString();
             mskTextBoxUnidade.Text = lista[3].ToString();
             mskTextBoxQtdTitulos.Text = lista[4].ToString();
@@ -26,33 +34,26 @@ namespace GeraCompe
 
         private void btnGerar_Click(object sender, EventArgs e)
         {
-            //System.Windows.Forms.MessageBox.Show(DateTime.Parse(mskTextBoxDtArq.Text).ToString("yyyyMMdd"));
-            //DateTime.Parse(mskTextBoxDtArq.Text).ToString("yyyyMMdd");
+            DbParametros db = new DbParametros();
+            List<String> dbParametros = new List<string>();
+            dbParametros = db.buscaParametrosConexaoOracle();
 
             DadosCompe dadosCompe = new DadosCompe();
-            List<Titulos> titulos = new List<Titulos>();
-            //titulos = dadosCompe.buscaTitulos();
+            List<Titulos> titulos = new List<Titulos>();        
             
             titulos = dadosCompe.buscaTitulos(Int32.Parse(mskTextBoxEmpresa.Text.ToString()),
                 Int32.Parse(mskTextBoxUnidade.Text.ToString()),
-                Int32.Parse(mskTextBoxQtdTitulos.Text.ToString()));
-
-            //System.Windows.Forms.MessageBox.Show("Estou mandando como Data Arquivo "+ mskTextBoxDataArquivo.Text.ToString());
-
-            dadosCompe.GeraArquivoCompe(titulos, mskTextBoxDataArquivo.Text.ToString(),
-                 mskTextBoxDataLiquidacao.Text.ToString(), textBoxDiretorio.Text.ToString());
-
-            /*
-            dadosCompe.GeraArquivoCompe(titulos, DateTime.Parse(mskTextBoxDataArquivo.Text),
-                mskTextBoxDataLiquidacao.Text.ToString(), textBoxDiretorio.Text.ToString());
-            */
-
+                Int32.Parse(mskTextBoxQtdTitulos.Text.ToString()));            
+            
+            dadosCompe.GeraArquivoCompe(titulos, DateTime.Parse(mskTextBoxDtArq.Text),
+                DateTime.Parse(mskTextBoxDtLiq.Text), textBoxDiretorio.Text.ToString());
+            
             LeitorArquivoParametros leitor = new LeitorArquivoParametros();
             List<String> lista = new List<string>();
             lista = leitor.BuscaParametros();
 
-            mskTextBoxDataLiquidacao.Text = lista[0].ToString();
-            mskTextBoxDataArquivo.Text = lista[1].ToString();
+            mskTextBoxDtLiq.Text = lista[0];
+            mskTextBoxDtArq.Text = lista[1];                        
             mskTextBoxEmpresa.Text = lista[2].ToString();
             mskTextBoxUnidade.Text = lista[3].ToString();
             mskTextBoxQtdTitulos.Text = lista[4].ToString();
@@ -90,6 +91,21 @@ namespace GeraCompe
         }
 
         private void textBoxDiretorio_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxLoginBd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxSenhaBd_TextChanged(object sender, EventArgs e)
         {
 
         }
