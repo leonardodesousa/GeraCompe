@@ -48,6 +48,7 @@
             this.labelSenhaBd = new System.Windows.Forms.Label();
             this.textBoxSenhaBd = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAtaulizarSenha = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +58,7 @@
             this.btnGerar.Location = new System.Drawing.Point(76, 549);
             this.btnGerar.Name = "btnGerar";
             this.btnGerar.Size = new System.Drawing.Size(112, 47);
-            this.btnGerar.TabIndex = 10;
+            this.btnGerar.TabIndex = 12;
             this.btnGerar.Text = "Gerar Arquivo";
             this.btnGerar.UseVisualStyleBackColor = true;
             this.btnGerar.Click += new System.EventHandler(this.btnGerar_Click);
@@ -70,7 +71,7 @@
             this.mskTextBoxQtdTitulos.Name = "mskTextBoxQtdTitulos";
             this.mskTextBoxQtdTitulos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.mskTextBoxQtdTitulos.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxQtdTitulos.TabIndex = 1;
+            this.mskTextBoxQtdTitulos.TabIndex = 6;
             this.mskTextBoxQtdTitulos.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxQtdTitulos_MaskInputRejected);
             // 
             // labelQtdTitulos
@@ -130,7 +131,7 @@
             this.mskTextBoxEmpresa.Mask = "00";
             this.mskTextBoxEmpresa.Name = "mskTextBoxEmpresa";
             this.mskTextBoxEmpresa.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxEmpresa.TabIndex = 3;
+            this.mskTextBoxEmpresa.TabIndex = 8;
             this.mskTextBoxEmpresa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxEmpresa.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxEmpresa_MaskInputRejected);
             // 
@@ -141,7 +142,7 @@
             this.mskTextBoxUnidade.Mask = "00";
             this.mskTextBoxUnidade.Name = "mskTextBoxUnidade";
             this.mskTextBoxUnidade.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxUnidade.TabIndex = 5;
+            this.mskTextBoxUnidade.TabIndex = 10;
             this.mskTextBoxUnidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxUnidade.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxUnidade_MaskInputRejected);
             // 
@@ -160,7 +161,7 @@
             this.textBoxDiretorio.Location = new System.Drawing.Point(281, 201);
             this.textBoxDiretorio.Name = "textBoxDiretorio";
             this.textBoxDiretorio.Size = new System.Drawing.Size(538, 23);
-            this.textBoxDiretorio.TabIndex = 6;
+            this.textBoxDiretorio.TabIndex = 11;
             this.textBoxDiretorio.TextChanged += new System.EventHandler(this.textBoxDiretorio_TextChanged);
             // 
             // mskTextBoxDtArq
@@ -170,7 +171,7 @@
             this.mskTextBoxDtArq.Mask = "00/00/0000";
             this.mskTextBoxDtArq.Name = "mskTextBoxDtArq";
             this.mskTextBoxDtArq.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxDtArq.TabIndex = 2;
+            this.mskTextBoxDtArq.TabIndex = 7;
             this.mskTextBoxDtArq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxDtArq.ValidatingType = typeof(System.DateTime);
             // 
@@ -181,7 +182,7 @@
             this.mskTextBoxDtLiq.Mask = "00/00/0000";
             this.mskTextBoxDtLiq.Name = "mskTextBoxDtLiq";
             this.mskTextBoxDtLiq.Size = new System.Drawing.Size(100, 27);
-            this.mskTextBoxDtLiq.TabIndex = 4;
+            this.mskTextBoxDtLiq.TabIndex = 9;
             this.mskTextBoxDtLiq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxDtLiq.ValidatingType = typeof(System.DateTime);
             // 
@@ -202,7 +203,7 @@
             this.groupBox1.Location = new System.Drawing.Point(44, 240);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(877, 273);
-            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados da geração do Arquivo";
             // 
@@ -224,7 +225,7 @@
             this.textBoxLoginBd.Name = "textBoxLoginBd";
             this.textBoxLoginBd.ReadOnly = true;
             this.textBoxLoginBd.Size = new System.Drawing.Size(201, 27);
-            this.textBoxLoginBd.TabIndex = 14;
+            this.textBoxLoginBd.TabIndex = 2;
             this.textBoxLoginBd.TextChanged += new System.EventHandler(this.textBoxLoginBd_TextChanged);
             // 
             // labelSenhaBd
@@ -246,11 +247,12 @@
             this.textBoxSenhaBd.PasswordChar = '*';
             this.textBoxSenhaBd.ReadOnly = true;
             this.textBoxSenhaBd.Size = new System.Drawing.Size(201, 27);
-            this.textBoxSenhaBd.TabIndex = 16;
+            this.textBoxSenhaBd.TabIndex = 3;
             this.textBoxSenhaBd.TextChanged += new System.EventHandler(this.textBoxSenhaBd_TextChanged);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnAtaulizarSenha);
             this.groupBox2.Controls.Add(this.textBoxSenhaBd);
             this.groupBox2.Controls.Add(this.labelSenhaBd);
             this.groupBox2.Controls.Add(this.textBoxLoginBd);
@@ -258,9 +260,19 @@
             this.groupBox2.Location = new System.Drawing.Point(44, 45);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(877, 176);
-            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Login Banco de dados";
+            // 
+            // btnAtaulizarSenha
+            // 
+            this.btnAtaulizarSenha.Location = new System.Drawing.Point(719, 79);
+            this.btnAtaulizarSenha.Name = "btnAtaulizarSenha";
+            this.btnAtaulizarSenha.Size = new System.Drawing.Size(83, 38);
+            this.btnAtaulizarSenha.TabIndex = 4;
+            this.btnAtaulizarSenha.Text = "Atualizar Senha";
+            this.btnAtaulizarSenha.UseVisualStyleBackColor = true;
+            this.btnAtaulizarSenha.Click += new System.EventHandler(this.btnAtaulizarSenha_Click);
             // 
             // GeraCompe
             // 
@@ -303,5 +315,6 @@
         private Label labelSenhaBd;
         private TextBox textBoxSenhaBd;
         private GroupBox groupBox2;
+        private Button btnAtaulizarSenha;
     }
 }

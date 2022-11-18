@@ -30,8 +30,7 @@ namespace GeraCompe.NovaPasta
             String serverName = parametrosBD[3];
             String credimasterOwner = parametrosBD[4];            
             String userId = login[0];
-            String password = login[1];
-
+            String password = login[1];            
 
             List <Titulos> titulos = new List<Titulos>();
 
@@ -137,13 +136,17 @@ namespace GeraCompe.NovaPasta
             }
 
             String path2 = @"C:\TotalBanco\Crediblaster\GeraCompe\GeraCompe.ini";
+
+            int qtdTitulos = titulos.Count;
+            qtdTitulos++;
+
             using (StreamWriter sw = File.CreateText(path2))
             {
                 sw.WriteLine("DATA_LIQUIDACAO=" + DateTime.Parse(dataLiquidacao.ToString()).ToString("dd/MM/yyyy"));
                 sw.WriteLine("DATA_ARQUIVO=" + DateTime.Parse(dataArquivo.ToString()).ToString("dd/MM/yyyy"));
                 sw.WriteLine("EMPRESA=" + 36);
                 sw.WriteLine("UNIDADE=" + 36);
-                sw.WriteLine("QUANTIDADE_TITULOS=" + 15);
+                sw.WriteLine("QUANTIDADE_TITULOS=" + qtdTitulos);
                 sw.WriteLine("DIRETORIO_DESTINO=" + diretorio);              
             }
         }

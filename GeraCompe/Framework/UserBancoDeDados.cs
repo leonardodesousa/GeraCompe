@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,24 @@ namespace GeraCompe.Framework
 {
     internal class UserBancoDeDados
     {
+
+        public int atualizaLogin(String novoLogin, String novaSenha)
+        {
+            String path = @"C:\TotalBanco\Crediblaster\GeraCompe\GeraCompePBD.dll";
+            String userId;
+            String pass;
+            int retorno = 0;
+
+
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine("userId=" + novoLogin.Trim());
+                sw.WriteLine("password=" + novaSenha.Trim());
+                retorno = 1;
+            }
+                return retorno;
+        }
+
         public List<String> getLoginBd()
         {
             List<String> login = new List<String>(); 

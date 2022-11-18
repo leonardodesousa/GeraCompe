@@ -28,7 +28,7 @@ namespace GeraCompe
             mskTextBoxDtArq.Text = lista[1];
             mskTextBoxEmpresa.Text = lista[2].ToString();
             mskTextBoxUnidade.Text = lista[3].ToString();
-            mskTextBoxQtdTitulos.Text = lista[4].ToString();
+            mskTextBoxQtdTitulos.Text = lista[4].ToString().PadLeft(7,'0');
             textBoxDiretorio.Text = lista[5].ToString();
         }
 
@@ -56,7 +56,7 @@ namespace GeraCompe
             mskTextBoxDtArq.Text = lista[1];                        
             mskTextBoxEmpresa.Text = lista[2].ToString();
             mskTextBoxUnidade.Text = lista[3].ToString();
-            mskTextBoxQtdTitulos.Text = lista[4].ToString();
+            mskTextBoxQtdTitulos.Text = lista[4].ToString().PadLeft(7, '0');
             textBoxDiretorio.Text = lista[5].ToString();
         }
 
@@ -108,6 +108,12 @@ namespace GeraCompe
         private void textBoxSenhaBd_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAtaulizarSenha_Click(object sender, EventArgs e)
+        {
+            FormAlterarLogin formAlterarLogin = new FormAlterarLogin();
+            formAlterarLogin.Show();
         }
     }
 }
