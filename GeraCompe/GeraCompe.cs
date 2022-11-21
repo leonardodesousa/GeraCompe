@@ -10,7 +10,7 @@ namespace GeraCompe
         {
             InitializeComponent();
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-            this.Text = String.Format("Gerador de Arquivo de Compensação - Letsbank (Versão {0})", version);
+            this.Text = String.Format("Gerador de Arquivo de Compensação (Versão {0})", version);
 
             UserBancoDeDados user = new UserBancoDeDados();
             List<String> login = new List<String>();
