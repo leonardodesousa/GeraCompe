@@ -12,7 +12,7 @@ namespace GeraCompe.Util
 {
     internal class DadosCompe
     {
-        public List<Titulos> buscaTitulos(int empresa, int unidade, int quantidadeDeTitulos)
+        public List<Titulos> buscaTitulos(int empresa, int unidade, int quantidadeDeTitulos, string modalidade)
         {
             //String dataBase = "oracle";
 
@@ -41,7 +41,8 @@ namespace GeraCompe.Util
                         " inner join " + credimasterOwner + ".t402titu titu " +
                         "    on titu.nr_nos_nr = tiab.nr_nos_nr " +
                         " where tiab.dt_inc > '01-jan-2000' " +
-                        "   and tiab.sg_mod in ('CBSJ', 'COBGGAR', 'CBSF')" +
+                        //"   and tiab.sg_mod in ('CBSJ', 'COBGGAR', 'CBSF')" +
+                        "   and tiab.sg_mod in ('"+ modalidade + "')" +
                         "   and titu.ds_snu is not null " +
                         "   and titu.id_sit_lqd = 'PA' " +
                         "   and tiab.cd_emp = " + empresa +
@@ -91,7 +92,7 @@ namespace GeraCompe.Util
             return titulos;
         }
 
-        public void GeraArquivoCompe(List<Titulos> titulos, DateTime dataArquivo, DateTime dataLiquidacao, string diretorio)
+        public void GeraArquivoCompe(List<Titulos> titulos, DateTime dataArquivo, DateTime dataLiquidacao, string diretorio, string modalidade)
         {
             string dataArquivoFormatada = DateTime.Parse(dataArquivo.ToString()).ToString("yyyyMMdd");
             string dataLiquidacaoFromatada = DateTime.Parse(dataLiquidacao.ToString()).ToString("yyMMdd");
@@ -147,6 +148,7 @@ namespace GeraCompe.Util
                 sw.WriteLine("UNIDADE=" + 36);
                 sw.WriteLine("QUANTIDADE_TITULOS=" + qtdTitulos);
                 sw.WriteLine("DIRETORIO_DESTINO=" + diretorio);
+                sw.WriteLine("MODALIDADE=" + modalidade);
             }
         }
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeraCompe));
             this.btnGerar = new System.Windows.Forms.Button();
             this.mskTextBoxQtdTitulos = new System.Windows.Forms.MaskedTextBox();
@@ -43,14 +44,20 @@
             this.mskTextBoxDtArq = new System.Windows.Forms.MaskedTextBox();
             this.mskTextBoxDtLiq = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxModalidade = new System.Windows.Forms.TextBox();
             this.labelLogin = new System.Windows.Forms.Label();
             this.textBoxLoginBd = new System.Windows.Forms.TextBox();
             this.labelSenhaBd = new System.Windows.Forms.Label();
             this.textBoxSenhaBd = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAtaulizarSenha = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGerar
@@ -58,7 +65,7 @@
             this.btnGerar.Location = new System.Drawing.Point(76, 549);
             this.btnGerar.Name = "btnGerar";
             this.btnGerar.Size = new System.Drawing.Size(112, 47);
-            this.btnGerar.TabIndex = 12;
+            this.btnGerar.TabIndex = 20;
             this.btnGerar.Text = "Gerar Arquivo";
             this.btnGerar.UseVisualStyleBackColor = true;
             this.btnGerar.Click += new System.EventHandler(this.btnGerar_Click);
@@ -162,7 +169,7 @@
             this.textBoxDiretorio.Location = new System.Drawing.Point(281, 201);
             this.textBoxDiretorio.Name = "textBoxDiretorio";
             this.textBoxDiretorio.Size = new System.Drawing.Size(538, 23);
-            this.textBoxDiretorio.TabIndex = 11;
+            this.textBoxDiretorio.TabIndex = 12;
             this.textBoxDiretorio.TextChanged += new System.EventHandler(this.textBoxDiretorio_TextChanged);
             // 
             // mskTextBoxDtArq
@@ -190,6 +197,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBoxModalidade);
             this.groupBox1.Controls.Add(this.mskTextBoxDtLiq);
             this.groupBox1.Controls.Add(this.mskTextBoxDtArq);
             this.groupBox1.Controls.Add(this.textBoxDiretorio);
@@ -208,6 +217,29 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados da geração do Arquivo";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(603, 135);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 20);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Modalidade ->";
+            // 
+            // textBoxModalidade
+            // 
+            this.textBoxModalidade.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBoxModalidade.Location = new System.Drawing.Point(719, 132);
+            this.textBoxModalidade.MaxLength = 8;
+            this.textBoxModalidade.Name = "textBoxModalidade";
+            this.textBoxModalidade.Size = new System.Drawing.Size(100, 27);
+            this.textBoxModalidade.TabIndex = 11;
+            this.textBoxModalidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxModalidade.TextChanged += new System.EventHandler(this.textBoxModalidade_TextChanged);
+            this.textBoxModalidade.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxModalidade_Validating);
+            this.textBoxModalidade.Validated += new System.EventHandler(this.btnGerar_Click);
             // 
             // labelLogin
             // 
@@ -276,6 +308,14 @@
             this.btnAtaulizarSenha.UseVisualStyleBackColor = true;
             this.btnAtaulizarSenha.Click += new System.EventHandler(this.btnAtaulizarSenha_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
+            // errorProvider2
+            // 
+            this.errorProvider2.ContainerControl = this;
+            // 
             // GeraCompe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -293,6 +333,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -319,5 +361,9 @@
         private TextBox textBoxSenhaBd;
         private GroupBox groupBox2;
         private Button btnAtaulizarSenha;
+        private Label label1;
+        private TextBox textBoxModalidade;
+        private ErrorProvider errorProvider;
+        private ErrorProvider errorProvider2;
     }
 }

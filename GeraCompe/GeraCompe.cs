@@ -1,6 +1,8 @@
 using GeraCompe.Framework;
 using GeraCompe.Model;
 using GeraCompe.Util;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace GeraCompe
 {
@@ -29,6 +31,7 @@ namespace GeraCompe
             mskTextBoxUnidade.Text = lista[3].ToString();
             mskTextBoxQtdTitulos.Text = lista[4].ToString().PadLeft(7,'0');
             textBoxDiretorio.Text = lista[5].ToString();
+            textBoxModalidade.Text = lista[6].ToString();
         }
 
         private void btnGerar_Click(object sender, EventArgs e)
@@ -42,10 +45,12 @@ namespace GeraCompe
             
             titulos = dadosCompe.buscaTitulos(Int32.Parse(mskTextBoxEmpresa.Text.ToString()),
                 Int32.Parse(mskTextBoxUnidade.Text.ToString()),
-                Int32.Parse(mskTextBoxQtdTitulos.Text.ToString()));            
+                Int32.Parse(mskTextBoxQtdTitulos.Text.ToString()),
+                textBoxModalidade.Text.ToString().Trim().ToUpper());
             
             dadosCompe.GeraArquivoCompe(titulos, DateTime.Parse(mskTextBoxDtArq.Text),
-                DateTime.Parse(mskTextBoxDtLiq.Text), textBoxDiretorio.Text.ToString());
+                DateTime.Parse(mskTextBoxDtLiq.Text), textBoxDiretorio.Text.ToString(),
+                 textBoxModalidade.Text.ToString().Trim());
             
             LeitorArquivoParametros leitor = new LeitorArquivoParametros();
             List<String> lista = new List<string>();
@@ -57,6 +62,7 @@ namespace GeraCompe
             mskTextBoxUnidade.Text = lista[3].ToString();
             mskTextBoxQtdTitulos.Text = lista[4].ToString().PadLeft(7, '0');
             textBoxDiretorio.Text = lista[5].ToString();
+            textBoxModalidade.Text = lista[6].ToString().ToUpper();
         }
 
         private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -123,6 +129,27 @@ namespace GeraCompe
         private void GeraCompe_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxModalidade_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxModalidade_Validating(object sender, CancelEventArgs e)
+        {
+            ErrorProvider errorProviderApp = new ErrorProvider();
+            if (string.IsNullOrWhiteSpace(textBoxModalidade.Text))
+            {                
+                e.Cancel = true;
+                textBoxModalidade.Focus();
+                errorProviderApp.SetError(textBoxModalidade, "Campo modalidade percisa ser preenchido!");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderApp.SetError(textBoxModalidade, "");
+            }
         }
     }
 }

@@ -17,6 +17,7 @@ namespace GeraCompe.Util
             String unidade;
             String quantidadeTitulos;
             String diretorioDestino;
+            String modalidade;
 
 
             String path = @"C:\TotalBanco\Crediblaster\GeraCompe\GeraCompe.ini";
@@ -50,8 +51,7 @@ namespace GeraCompe.Util
                         {
                             unidade = ln.Substring(7, ln.Length - 7);
                             ListaParametros.Add(unidade);
-                        }
-                        //System.Windows.Forms.MessageBox.Show("LINHAS_POR_ARQUIVO recebe " + ln/*.Substring(15, ln.Length - 15)*/);
+                        }                        
                         if (ln.Length > 17 && ln.Substring(0, 18) == "QUANTIDADE_TITULOS")
                         {
                             quantidadeTitulos = ln.Substring(18, ln.Length - 18);
@@ -62,6 +62,22 @@ namespace GeraCompe.Util
                             diretorioDestino = ln.Substring(18, ln.Length - 18);
                             ListaParametros.Add(diretorioDestino);
                         }
+                        //System.Windows.Forms.MessageBox.Show("MODALIDADE recebe " + ln.Substring(10, ln.Length - 10));
+                        if (ln.Length > 9 && ln.Substring(0, 10).ToUpper() == "MODALIDADE")
+                        {
+                            modalidade = ln.Substring(11, ln.Length - 11);
+                            ListaParametros.Add(modalidade);
+                        }                        
+                    }
+                }
+                //System.Windows.Forms.MessageBox.Show("tamanho da lista" + ListaParametros.Count);
+
+                if (ListaParametros.Count < 7)
+                {
+                    //System.Windows.Forms.MessageBox.Show("entrei no if");
+                    while (ListaParametros.Count < 7)
+                    {
+                        ListaParametros.Add(" ");
                     }
                 }
             }
