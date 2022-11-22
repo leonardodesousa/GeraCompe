@@ -114,5 +114,15 @@ namespace GeraCompe
             FormAlterarLogin formAlterarLogin = new FormAlterarLogin();
             formAlterarLogin.Show();
         }
+
+        private void mskTextBoxDtArq_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void GeraCompe_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

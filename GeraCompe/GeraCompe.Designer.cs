@@ -69,9 +69,10 @@
             this.mskTextBoxQtdTitulos.Location = new System.Drawing.Point(281, 44);
             this.mskTextBoxQtdTitulos.Mask = "000000";
             this.mskTextBoxQtdTitulos.Name = "mskTextBoxQtdTitulos";
-            this.mskTextBoxQtdTitulos.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.mskTextBoxQtdTitulos.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.mskTextBoxQtdTitulos.Size = new System.Drawing.Size(100, 27);
             this.mskTextBoxQtdTitulos.TabIndex = 6;
+            this.mskTextBoxQtdTitulos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxQtdTitulos.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxQtdTitulos_MaskInputRejected);
             // 
             // labelQtdTitulos
@@ -174,6 +175,7 @@
             this.mskTextBoxDtArq.TabIndex = 7;
             this.mskTextBoxDtArq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.mskTextBoxDtArq.ValidatingType = typeof(System.DateTime);
+            this.mskTextBoxDtArq.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTextBoxDtArq_MaskInputRejected);
             // 
             // mskTextBoxDtLiq
             // 
@@ -286,6 +288,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GeraCompe";
             this.Text = "Tela Principal";
+            this.Load += new System.EventHandler(this.GeraCompe_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

@@ -46,7 +46,7 @@ namespace GeraCompe.Util
                         "   and titu.id_sit_lqd = 'PA' " +
                         "   and tiab.cd_emp = " + empresa +
                         "   and tiab.cd_und = " + unidade +
-                        "   and rownum < " + quantidadeDeTitulos +
+                        "   and rownum <= " + quantidadeDeTitulos +
                         " group by titu.cd_cli, titu.vr_tit, titu.ds_snu, tiab.dt_ven  " +
                         " order by tiab.dt_ven asc ";
 
@@ -137,8 +137,7 @@ namespace GeraCompe.Util
 
             string path2 = @"C:\TotalBanco\Crediblaster\GeraCompe\GeraCompe.ini";
 
-            int qtdTitulos = titulos.Count;
-            qtdTitulos++;
+            int qtdTitulos = titulos.Count;            
 
             using (StreamWriter sw = File.CreateText(path2))
             {
