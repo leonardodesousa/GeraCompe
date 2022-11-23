@@ -17,7 +17,6 @@ namespace GeraCompe
             UserBancoDeDados user = new UserBancoDeDados();
             List<String> login = new List<String>();
             login = user.getLoginBd();
-
             textBoxLoginBd.Text = login[0];
             textBoxSenhaBd.Text = login[1];
 
@@ -36,33 +35,68 @@ namespace GeraCompe
 
         private void btnGerar_Click(object sender, EventArgs e)
         {
-            DbParametros db = new DbParametros();
-            List<String> dbParametros = new List<string>();
-            dbParametros = db.buscaParametrosConexaoOracle();
+            UserBancoDeDados user = new UserBancoDeDados();
+            List<String> login = new List<String>();
+            login = user.getLoginBd();
+            textBoxLoginBd.Text = login[0];
+            textBoxSenhaBd.Text = login[1];
 
-            DadosCompe dadosCompe = new DadosCompe();
-            List<Titulos> titulos = new List<Titulos>();        
-            
-            titulos = dadosCompe.buscaTitulos(Int32.Parse(mskTextBoxEmpresa.Text.ToString()),
-                Int32.Parse(mskTextBoxUnidade.Text.ToString()),
-                Int32.Parse(mskTextBoxQtdTitulos.Text.ToString()),
-                textBoxModalidade.Text.ToString().Trim().ToUpper());
-            
-            dadosCompe.GeraArquivoCompe(titulos, DateTime.Parse(mskTextBoxDtArq.Text),
-                DateTime.Parse(mskTextBoxDtLiq.Text), textBoxDiretorio.Text.ToString(),
-                 textBoxModalidade.Text.ToString().Trim());
-            
-            LeitorArquivoParametros leitor = new LeitorArquivoParametros();
-            List<String> lista = new List<string>();
-            lista = leitor.BuscaParametros();
+            if (String.IsNullOrEmpty(mskTextBoxDtLiq.Text.ToString()) || String.IsNullOrEmpty(mskTextBoxDtArq.Text.ToString()) ||
+                String.IsNullOrEmpty(mskTextBoxEmpresa.Text.ToString()) || String.IsNullOrEmpty(mskTextBoxUnidade.Text.ToString()) ||
+                String.IsNullOrEmpty(mskTextBoxQtdTitulos.Text.ToString()) || String.IsNullOrEmpty(textBoxDiretorio.Text.ToString()) ||
+                String.IsNullOrEmpty(textBoxModalidade.Text.ToString()))
+            {
+                DialogResult dialogResult = MessageBox.Show("Verifique se todos os campos foram preenchidos!",
+                   "Campos obrigatórios não preenchidos!", MessageBoxButtons.OK);
+            } else
+            {
+                String campoLogin = textBoxLoginBd.Text.ToString().Trim();
+                String senha = textBoxSenhaBd.Text.ToString().Trim();
+                if (string.IsNullOrEmpty(campoLogin) && String.IsNullOrEmpty(senha))
+                {
+                    DialogResult dialogResult = MessageBox.Show("Informe a senha e login do banco de dados",
+                        "Erro ao buscar parâmetros de conexão!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    DbParametros db = new DbParametros();
+                    Boolean validaArquivoDbParametros = false;
 
-            mskTextBoxDtLiq.Text = lista[0];
-            mskTextBoxDtArq.Text = lista[1];                        
-            mskTextBoxEmpresa.Text = lista[2].ToString();
-            mskTextBoxUnidade.Text = lista[3].ToString();
-            mskTextBoxQtdTitulos.Text = lista[4].ToString().PadLeft(7, '0');
-            textBoxDiretorio.Text = lista[5].ToString();
-            textBoxModalidade.Text = lista[6].ToString().ToUpper();
+                    validaArquivoDbParametros = db.dbParametrosChecker();
+                    if (validaArquivoDbParametros == true)
+                    {
+                        List<String> dbParametros = new List<string>();
+                        dbParametros = db.buscaParametrosConexaoOracle();
+
+                        DadosCompe dadosCompe = new DadosCompe();
+                        List<Titulos> titulos = new List<Titulos>();
+
+                        titulos = dadosCompe.buscaTitulos(Int32.Parse(mskTextBoxEmpresa.Text.ToString()),
+                            Int32.Parse(mskTextBoxUnidade.Text.ToString()),
+                            Int32.Parse(mskTextBoxQtdTitulos.Text.ToString()),
+                            textBoxModalidade.Text.ToString().Trim().ToUpper());
+
+                        dadosCompe.GeraArquivoCompe(titulos, DateTime.Parse(mskTextBoxDtArq.Text),
+                            DateTime.Parse(mskTextBoxDtLiq.Text), textBoxDiretorio.Text.ToString(),
+                             textBoxModalidade.Text.ToString().Trim());
+
+                        LeitorArquivoParametros leitor = new LeitorArquivoParametros();
+                        List<String> lista = new List<string>();
+                        lista = leitor.BuscaParametros();
+
+                        mskTextBoxDtLiq.Text = lista[0];
+                        mskTextBoxDtArq.Text = lista[1];
+                        mskTextBoxEmpresa.Text = lista[2].ToString();
+                        mskTextBoxUnidade.Text = lista[3].ToString();
+                        mskTextBoxQtdTitulos.Text = lista[4].ToString().PadLeft(7, '0');
+                        textBoxDiretorio.Text = lista[5].ToString();
+                        textBoxModalidade.Text = lista[6].ToString().ToUpper();
+                    }
+
+                }
+
+            }           
+            
         }
 
         private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -118,7 +152,7 @@ namespace GeraCompe
         private void btnAtaulizarSenha_Click(object sender, EventArgs e)
         {
             FormAlterarLogin formAlterarLogin = new FormAlterarLogin();
-            formAlterarLogin.Show();
+            formAlterarLogin.Show(); 
         }
 
         private void mskTextBoxDtArq_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
@@ -136,6 +170,12 @@ namespace GeraCompe
 
         }
 
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        /*
         private void textBoxModalidade_Validating(object sender, CancelEventArgs e)
         {
             ErrorProvider errorProviderApp = new ErrorProvider();
@@ -151,5 +191,7 @@ namespace GeraCompe
                 errorProviderApp.SetError(textBoxModalidade, "");
             }
         }
+        */
+
     }
 }

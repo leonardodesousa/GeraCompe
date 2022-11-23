@@ -55,7 +55,11 @@ namespace GeraCompe.Framework
                     }                    
                 }
             }
-                return login;
+            while(login.Count < 2)
+            {
+                login.Add(" ");
+            }
+            return login;
         }
     }
 }

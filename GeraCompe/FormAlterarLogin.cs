@@ -36,7 +36,8 @@ namespace GeraCompe
                 if (validaAtualizacao == 1)
                 {
                     DialogResult dialogResult = MessageBox.Show("Login atualizado com sucesso! ", "Atualização de login", MessageBoxButtons.OK);
-                    this.Close();
+                    GeraCompe geraCompe = new GeraCompe();                    
+                    this.Close();                   
                 }
                 else
                 {

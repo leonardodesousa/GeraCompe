@@ -40,8 +40,7 @@ namespace GeraCompe.Util
                         "  from " + credimasterOwner + ".t402tiab tiab " +
                         " inner join " + credimasterOwner + ".t402titu titu " +
                         "    on titu.nr_nos_nr = tiab.nr_nos_nr " +
-                        " where tiab.dt_inc > '01-jan-2000' " +
-                        //"   and tiab.sg_mod in ('CBSJ', 'COBGGAR', 'CBSF')" +
+                        " where tiab.dt_inc > '01-jan-2000' " +                        
                         "   and tiab.sg_mod in ('"+ modalidade + "')" +
                         "   and titu.ds_snu is not null " +
                         "   and titu.id_sit_lqd = 'PA' " +

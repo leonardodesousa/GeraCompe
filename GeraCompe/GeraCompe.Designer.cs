@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeraCompe));
             this.btnGerar = new System.Windows.Forms.Button();
             this.mskTextBoxQtdTitulos = new System.Windows.Forms.MaskedTextBox();
@@ -52,12 +51,9 @@
             this.textBoxSenhaBd = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAtaulizarSenha = new System.Windows.Forms.Button();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnSair = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGerar
@@ -238,7 +234,6 @@
             this.textBoxModalidade.TabIndex = 11;
             this.textBoxModalidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxModalidade.TextChanged += new System.EventHandler(this.textBoxModalidade_TextChanged);
-            this.textBoxModalidade.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxModalidade_Validating);
             this.textBoxModalidade.Validated += new System.EventHandler(this.btnGerar_Click);
             // 
             // labelLogin
@@ -308,19 +303,25 @@
             this.btnAtaulizarSenha.UseVisualStyleBackColor = true;
             this.btnAtaulizarSenha.Click += new System.EventHandler(this.btnAtaulizarSenha_Click);
             // 
-            // errorProvider
+            // btnSair
             // 
-            this.errorProvider.ContainerControl = this;
-            // 
-            // errorProvider2
-            // 
-            this.errorProvider2.ContainerControl = this;
+            this.btnSair.BackColor = System.Drawing.Color.Red;
+            this.btnSair.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSair.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSair.Location = new System.Drawing.Point(763, 565);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(112, 47);
+            this.btnSair.TabIndex = 21;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // GeraCompe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1259, 644);
+            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnGerar);
@@ -333,8 +334,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -363,7 +362,6 @@
         private Button btnAtaulizarSenha;
         private Label label1;
         private TextBox textBoxModalidade;
-        private ErrorProvider errorProvider;
-        private ErrorProvider errorProvider2;
+        private Button btnSair;
     }
 }
