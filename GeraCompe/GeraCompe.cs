@@ -14,6 +14,17 @@ namespace GeraCompe
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = String.Format("Gerador de Arquivo de Compensação (Versão {0})", version);
 
+            /*
+            ConexaoBD bd = new ConexaoBD();
+            Boolean conecta = bd.testaConexao();
+            
+            if(conecta == false)
+            {
+                DialogResult dialogResult = MessageBox.Show("Erro ao acessar o Banco de dados",
+                   "Verifique os parâmetros de conexão", MessageBoxButtons.OK);
+            }
+            */
+
             UserBancoDeDados user = new UserBancoDeDados();
             List<String> login = new List<String>();
             login = user.getLoginBd();
@@ -23,14 +34,17 @@ namespace GeraCompe
             LeitorArquivoParametros leitor = new LeitorArquivoParametros();
             List<String> lista = new List<string>();
             lista = leitor.BuscaParametros();
-                        
-            mskTextBoxDtLiq.Text = lista[0];            
+
+            mskTextBoxDtLiq.Text = lista[0];
             mskTextBoxDtArq.Text = lista[1];
             mskTextBoxEmpresa.Text = lista[2].ToString();
             mskTextBoxUnidade.Text = lista[3].ToString();
-            mskTextBoxQtdTitulos.Text = lista[4].ToString().PadLeft(7,'0');
+            mskTextBoxQtdTitulos.Text = lista[4].ToString().PadLeft(7, '0');
             textBoxDiretorio.Text = lista[5].ToString();
             textBoxModalidade.Text = lista[6].ToString();
+
+
+
         }
 
         private void btnGerar_Click(object sender, EventArgs e)
@@ -173,6 +187,11 @@ namespace GeraCompe
         private void btnSair_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void textBoxModalidade_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
 
         /*

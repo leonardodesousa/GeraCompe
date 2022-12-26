@@ -16,6 +16,9 @@ namespace GeraCompe.Util
         {
             //String dataBase = "oracle";
 
+
+                       
+
             List<string> parametrosBD = new List<string>();
             DbParametros db = new DbParametros();
             parametrosBD = db.buscaParametrosConexaoOracle();
@@ -36,7 +39,8 @@ namespace GeraCompe.Util
 
             var query = "SELECT LPAD(titu.cd_cli, 8, 0) as cd_cli, " +
                         "       ltrim(rtrim(replace(to_char(sum(titu.vr_tit + coalesce(tiab.vr_prm,0) + coalesce(tiab.vr_mlt,0)), '00000000.00'), '.', ''))) as vr_tit," +
-                        "       LPAD(titu.ds_snu, 12, 0) as ds_snu " +
+                        //"       LPAD(titu.ds_snu, 12, 0) as ds_snu " +
+                        "       titu.ds_snu as ds_snu                " +
                         "  from " + credimasterOwner + ".t402tiab tiab " +
                         " inner join " + credimasterOwner + ".t402titu titu " +
                         "    on titu.nr_nos_nr = tiab.nr_nos_nr " +
@@ -47,6 +51,7 @@ namespace GeraCompe.Util
                         "   and tiab.cd_emp = " + empresa +
                         "   and tiab.cd_und = " + unidade +
                         "   and rownum <= " + quantidadeDeTitulos +
+                        //"   and titu.cd_cli = 212010            " + 
                         " group by titu.cd_cli, titu.vr_tit, titu.ds_snu, tiab.dt_ven  " +
                         " order by tiab.dt_ven asc ";
 
@@ -123,7 +128,7 @@ namespace GeraCompe.Util
                 sw.WriteLine(header);
                 for (int i = 0; i < titulos.Count; i++)
                 {
-                    sw.WriteLine(bancoEmissor + espaco2 + titulos[i].valorPago.ToString() + espaco3 + titulos[i].seuNumero.ToString() +
+                    sw.WriteLine(bancoEmissor + espaco2 + titulos[i].valorPago.ToString() + espaco3 + titulos[i].seuNumero.ToString().PadRight(12, ' ') +
                         titulos[i].codigoCliente.ToString() + espaco4 + espaco5 + espaco6 + dataLiquidacaoFromatada + espaco7 + "00" +
                         titulos[i].valorPago.ToString() + espaco8 + espaco9 + ispbRecebedora + espaco10 + linha.ToString().PadLeft(5, '0'));
                     linha++;

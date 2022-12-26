@@ -44,7 +44,6 @@
             this.mskTextBoxDtLiq = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxModalidade = new System.Windows.Forms.TextBox();
             this.labelLogin = new System.Windows.Forms.Label();
             this.textBoxLoginBd = new System.Windows.Forms.TextBox();
             this.labelSenhaBd = new System.Windows.Forms.Label();
@@ -52,6 +51,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAtaulizarSenha = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
+            this.textBoxModalidade = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -193,8 +193,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBoxModalidade);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.mskTextBoxDtLiq);
             this.groupBox1.Controls.Add(this.mskTextBoxDtArq);
             this.groupBox1.Controls.Add(this.textBoxDiretorio);
@@ -223,18 +223,6 @@
             this.label1.Size = new System.Drawing.Size(110, 20);
             this.label1.TabIndex = 13;
             this.label1.Text = "Modalidade ->";
-            // 
-            // textBoxModalidade
-            // 
-            this.textBoxModalidade.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBoxModalidade.Location = new System.Drawing.Point(719, 132);
-            this.textBoxModalidade.MaxLength = 8;
-            this.textBoxModalidade.Name = "textBoxModalidade";
-            this.textBoxModalidade.Size = new System.Drawing.Size(100, 27);
-            this.textBoxModalidade.TabIndex = 11;
-            this.textBoxModalidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBoxModalidade.TextChanged += new System.EventHandler(this.textBoxModalidade_TextChanged);
-            this.textBoxModalidade.Validated += new System.EventHandler(this.btnGerar_Click);
             // 
             // labelLogin
             // 
@@ -316,6 +304,15 @@
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // textBoxModalidade
+            // 
+            this.textBoxModalidade.Location = new System.Drawing.Point(719, 132);
+            this.textBoxModalidade.MaxLength = 8;
+            this.textBoxModalidade.Name = "textBoxModalidade";
+            this.textBoxModalidade.Size = new System.Drawing.Size(100, 23);
+            this.textBoxModalidade.TabIndex = 11;
+            this.textBoxModalidade.TextChanged += new System.EventHandler(this.textBoxModalidade_TextChanged_1);
+            // 
             // GeraCompe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -361,7 +358,7 @@
         private GroupBox groupBox2;
         private Button btnAtaulizarSenha;
         private Label label1;
-        private TextBox textBoxModalidade;
         private Button btnSair;
+        private TextBox textBoxModalidade;
     }
 }
