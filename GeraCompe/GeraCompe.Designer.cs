@@ -43,6 +43,7 @@
             this.mskTextBoxDtArq = new System.Windows.Forms.MaskedTextBox();
             this.mskTextBoxDtLiq = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxModalidade = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.labelLogin = new System.Windows.Forms.Label();
             this.textBoxLoginBd = new System.Windows.Forms.TextBox();
@@ -51,7 +52,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAtaulizarSenha = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
-            this.textBoxModalidade = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -214,6 +214,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados da geração do Arquivo";
             // 
+            // textBoxModalidade
+            // 
+            this.textBoxModalidade.Location = new System.Drawing.Point(719, 132);
+            this.textBoxModalidade.MaxLength = 8;
+            this.textBoxModalidade.Name = "textBoxModalidade";
+            this.textBoxModalidade.Size = new System.Drawing.Size(100, 23);
+            this.textBoxModalidade.TabIndex = 11;
+            this.textBoxModalidade.TextChanged += new System.EventHandler(this.textBoxModalidade_TextChanged_1);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -304,19 +313,11 @@
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // textBoxModalidade
-            // 
-            this.textBoxModalidade.Location = new System.Drawing.Point(719, 132);
-            this.textBoxModalidade.MaxLength = 8;
-            this.textBoxModalidade.Name = "textBoxModalidade";
-            this.textBoxModalidade.Size = new System.Drawing.Size(100, 23);
-            this.textBoxModalidade.TabIndex = 11;
-            this.textBoxModalidade.TextChanged += new System.EventHandler(this.textBoxModalidade_TextChanged_1);
-            // 
             // GeraCompe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1259, 644);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.groupBox2);

@@ -96,6 +96,90 @@ namespace GeraCompe.Util
             return titulos;
         }
 
+        public List<Titulos> buscaTitulosViaArquivo(int empresa, int unidade, int quantidadeDeTitulos, string modalidade)
+        {
+            //String dataBase = "oracle";
+
+
+
+
+            List<string> parametrosBD = new List<string>();
+            DbParametros db = new DbParametros();
+            parametrosBD = db.buscaParametrosConexaoOracle();
+
+            List<string> login = new List<string>();
+            UserBancoDeDados user = new UserBancoDeDados();
+            login = user.getLoginBd();
+
+            string dataBase = parametrosBD[0];
+            string host = parametrosBD[1];
+            string port = parametrosBD[2];
+            string serverName = parametrosBD[3];
+            string credimasterOwner = parametrosBD[4];
+            string userId = login[0];
+            string password = login[1];
+
+            List<Titulos> titulos = new List<Titulos>();
+
+            var query = "SELECT LPAD(titu.cd_cli, 8, 0) as cd_cli, " +
+                        "       ltrim(rtrim(replace(to_char(sum(titu.vr_tit + coalesce(tiab.vr_prm,0) + coalesce(tiab.vr_mlt,0)), '00000000.00'), '.', ''))) as vr_tit," +
+                        //"       LPAD(titu.ds_snu, 12, 0) as ds_snu " +
+                        "       titu.ds_snu as ds_snu                " +
+                        "  from " + credimasterOwner + ".t402tiab tiab " +
+                        " inner join " + credimasterOwner + ".t402titu titu " +
+                        "    on titu.nr_nos_nr = tiab.nr_nos_nr " +
+                        " where tiab.dt_inc > '01-jan-2000' " +
+                        "   and tiab.sg_mod in ('" + modalidade + "')" +
+                        "   and titu.ds_snu is not null " +
+                        "   and titu.id_sit_lqd = 'PA' " +
+                        "   and tiab.cd_emp = " + empresa +
+                        "   and tiab.cd_und = " + unidade +
+                        "   and rownum <= " + quantidadeDeTitulos +
+                        //"   and titu.cd_cli = 212010            " + 
+                        " group by titu.cd_cli, titu.vr_tit, titu.ds_snu, tiab.dt_ven  " +
+                        " order by tiab.dt_ven asc ";
+
+            if (dataBase.ToLower() == "oracle")
+            {
+                ConexaoBD conBD = new ConexaoBD();
+                string oradb = conBD.conecta(dataBase, host, port, serverName, userId, password);
+
+                OracleConnection conn = new OracleConnection(oradb);
+                OracleCommand cmd = new OracleCommand(query.ToString(), conn);
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                DataTable dt = new DataTable();
+
+                try
+                {
+                    conn.Open();
+                }
+                catch (OracleException e)
+                {
+                    MessageBox.Show("Impossível conectar ao Banco: " + e);
+                }
+                try
+                {
+                    OracleDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        Titulos titulo = new Titulos();
+                        titulo.codigoCliente = dr.GetString(0);
+                        titulo.valorPago = dr.GetString(1);
+                        titulo.seuNumero = dr.GetString(2);
+                        titulos.Add(titulo);
+                        titulo = null;
+                    }
+                }
+                catch (OracleException e)
+                {
+                    MessageBox.Show("Ocorreu um erro ao consultar o banco de dados: " + e);
+                }
+                conn.Close();
+            }
+            return titulos;
+        }
+
         public void GeraArquivoCompe(List<Titulos> titulos, DateTime dataArquivo, DateTime dataLiquidacao, string diretorio, string modalidade)
         {
             string dataArquivoFormatada = DateTime.Parse(dataArquivo.ToString()).ToString("yyyyMMdd");
